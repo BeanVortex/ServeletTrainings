@@ -5,7 +5,7 @@
         <title>JSP - Hello World</title>
     </head>
     <body>
-        <form action="hello-servlet">
+        <form action="add">
             <label>
                 number1
                 <input type="text" name="num1">
