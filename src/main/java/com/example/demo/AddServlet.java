@@ -24,8 +24,14 @@ public class AddServlet extends HttpServlet {
         var num2 = Integer.parseInt(request.getParameter("num2"));
         var sum = num1 + num2;
 
-        request.setAttribute("sum", sum);
-        var rd = request.getRequestDispatcher("square");
-        rd.forward(request, response);
+//        request.setAttribute("sum", sum);
+//        var rd = request.getRequestDispatcher("square");
+//        rd.forward(request, response);
+//        response.sendRedirect("square?sum=" + sum); // URL rewriting
+//        var session = request.getSession();
+//        session.setAttribute("sum", sum);
+        var cookie = new Cookie("sum", sum + "");
+        response.addCookie(cookie);
+        response.sendRedirect("square");
     }
 }
