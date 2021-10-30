@@ -20,12 +20,12 @@ public class AddServlet extends HttpServlet {
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        int num1 = Integer.parseInt(request.getParameter("num1"));
-        int num2 = Integer.parseInt(request.getParameter("num2"));
-        int sum = num1 + num2;
+        var num1 = Integer.parseInt(request.getParameter("num1"));
+        var num2 = Integer.parseInt(request.getParameter("num2"));
+        var sum = num1 + num2;
 
         request.setAttribute("sum", sum);
-        RequestDispatcher rd = request.getRequestDispatcher("square");
+        var rd = request.getRequestDispatcher("square");
         rd.forward(request, response);
     }
 }

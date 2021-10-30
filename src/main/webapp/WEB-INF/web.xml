@@ -11,7 +11,7 @@
         <servlet-name>add</servlet-name>
         <url-pattern>/add</url-pattern>
     </servlet-mapping>
-    
+
     <servlet>
         <servlet-name>square</servlet-name>
         <servlet-class>com.example.demo.SquareServlet</servlet-class>
