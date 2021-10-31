@@ -6,17 +6,20 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet("/add")
+//@WebServlet(urlPatterns = "/add",
+//        initParams = {
+//                @WebInitParam(name = "name2", value = "darkdeveloper2")
+//        }
+//)
 public class AddServlet extends HttpServlet {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        add(req, res);
-    }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        add(req, res);
+        var out = res.getWriter();
+        var context = this.getServletContext();
+        out.println("Hi " + context.getInitParameter("name"));
+
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -24,6 +27,9 @@ public class AddServlet extends HttpServlet {
         int num1 = Integer.parseInt(request.getParameter("num1"));
         int num2 = Integer.parseInt(request.getParameter("num2"));
         int sum = num1 + num2;
+        var out = response.getWriter();
+        out.println(sum);
+
         request.setAttribute("sum", sum);
         var dispatcher = request.getRequestDispatcher("square");
         dispatcher.forward(request, response);
